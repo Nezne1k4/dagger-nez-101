@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -26,27 +28,43 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     // Unit test
     testImplementation 'junit:junit:4.12'
+
     // Android Test
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
     // Android support
     implementation "com.android.support:appcompat-v7:$android_support_version"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
     // Retrofit
     implementation(["com.squareup.retrofit2:retrofit:$retrofit_version",
                     "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
                     "com.squareup.retrofit2:converter-gson:$retrofit_version",
                     "com.squareup.okhttp3:okhttp:$okhttp_version",
                     "com.squareup.okhttp3:logging-interceptor:$okhttp_version"])
+
     // RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
     // RxAndroid
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    compile 'com.github.stfalcon:mvphelper:0.2.1'
+
+    // MVP
+    implementation 'com.github.stfalcon:mvphelper:0.2.1'
+
+    // Dagger
+    implementation 'com.google.dagger:dagger:2.15'
+    kapt 'com.google.dagger:dagger-compiler:2.15'
 }
