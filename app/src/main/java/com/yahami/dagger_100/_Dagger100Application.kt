@@ -21,7 +21,7 @@ class _Dagger100Application : Application() {
     lateinit var somethingElse: String
 
     companion object {
-        lateinit var appComponent: AppComponent
+        lateinit var graph: AppComponent
     }
 
     override fun onCreate() {
@@ -35,11 +35,11 @@ class _Dagger100Application : Application() {
     }
 
     private fun resolveDependencies() {
-        appComponent = DaggerAppComponent.builder()
+        graph = DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .build()
         // seed the graph to initialize objects in module
-        appComponent.inject(this)
+        graph.inject(this)
     }
 
 }
