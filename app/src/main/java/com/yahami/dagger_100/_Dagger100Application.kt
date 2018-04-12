@@ -37,7 +37,7 @@ class _Dagger100Application : Application() {
 
         apiComponent = DaggerApiRepositoryComponent.builder()
                 .networkComponent(networkComponent)
-                .apiRepositoryModule(ApiRepositoryModule(this))
+                .apiRepositoryModule(ApiRepositoryModule())
                 .build()
     }
 
