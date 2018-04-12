@@ -2,7 +2,6 @@ package com.yahami.dagger_100.remote.repository
 
 import com.yahami.dagger_100.remote.model.Repository
 import com.yahami.dagger_100.remote.model.User
-import com.yahami.dagger_100.remote.network.retrofit
 import com.yahami.dagger_100.remote.service.GithubApiService
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,9 +27,9 @@ class GithubApiRepositoryImpl(val api: GithubApiService) : GithubApiRepository {
                 }
     }
 
-    companion object {
-        fun get() : GithubApiRepository {
-            return GithubApiRepositoryImpl(retrofit.create(GithubApiService::class.java))
-        }
-    }
+//    companion object {
+//        fun get() : GithubApiRepository {
+//            return GithubApiRepositoryImpl(retrofit.create(GithubApiService::class.java))
+//        }
+//    }
 }

@@ -6,12 +6,12 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Repository(val id: Long,
-                 val name: String,
-                 val url: String
+                      val name: String,
+                      val url: String
 ) : Parcelable {
     constructor(repo: RepositoryResponse) : this(
-            id = repo.id,
-            name = repo.name,
-            url = repo.url
+            id = repo.id ?: 0,
+            name = repo.name ?: "",
+            url = repo.url ?: ""
     )
 }
