@@ -1,6 +1,7 @@
 package com.yahami.dagger_100.di
 
 import android.app.Application
+import com.yahami.dagger_100.ui.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -10,5 +11,5 @@ interface AppComponent {
 
     fun inject(application: Application)
 
-    //fun inject(baseActivity: BaseActivity)
+    //fun inject(mainActivity: MainActivity)
 }

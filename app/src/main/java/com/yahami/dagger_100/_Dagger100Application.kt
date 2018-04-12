@@ -4,41 +4,30 @@ import android.app.Application
 import com.yahami.dagger_100.di.AppComponent
 import com.yahami.dagger_100.di.AppModule
 import com.yahami.dagger_100.di.DaggerAppComponent
-import com.yahami.dagger_100.remote.di.component.ApiRepositoryComponent
-import com.yahami.dagger_100.remote.di.component.DaggerApiRepositoryComponent
-import com.yahami.dagger_100.remote.di.component.DaggerNetworkComponent
-import com.yahami.dagger_100.remote.di.module.ApiRepositoryModule
-import com.yahami.dagger_100.remote.di.module.NetworkModule
 
 class _Dagger100Application : Application() {
 
     companion object {
-        lateinit var graph: AppComponent
-
-        lateinit var apiComponent: ApiRepositoryComponent
+        lateinit var appComponent: AppComponent
+        lateinit var application: Application
     }
 
     override fun onCreate() {
-        //resolveDependencies()
+        // seed the dependency
+        resolveDependencies()
 
         super.onCreate()
-
-        graph = DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .build()
-
-        graph.inject(this)
     }
 
-    fun resolveDependencies() {
-        val networkComponent = DaggerNetworkComponent.builder()
-                .networkModule(NetworkModule())
+    private fun resolveDependencies() {
+        appComponent = DaggerAppComponent.builder()
+                .appModule(AppModule(this))
                 .build()
+        // seed the graph to initialize objects in module
+        appComponent.inject(this)
 
-        apiComponent = DaggerApiRepositoryComponent.builder()
-                .networkComponent(networkComponent)
-                .apiRepositoryModule(ApiRepositoryModule())
-                .build()
+        application = this
+
     }
 
 }

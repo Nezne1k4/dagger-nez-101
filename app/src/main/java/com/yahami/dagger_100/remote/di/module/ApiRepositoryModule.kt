@@ -8,23 +8,15 @@ import dagger.Provides
 import retrofit2.Retrofit
 
 @Module
-class ApiRepositoryModule() {
+class ApiRepositoryModule {
 
     @Provides
     fun provideGithubApiService(retrofit: Retrofit): GithubApiService {
         return retrofit.create(GithubApiService::class.java)
     }
 
-//    @Provides
-//    fun provideApplication() = application
-
     @Provides
     fun provideGithubApiRepository(githubApiService: GithubApiService): GithubApiRepository {
         return GithubApiRepositoryImpl(githubApiService)
     }
-
-//    @Provides
-//    fun provideGithubApiRepository(retrofit: Retrofit): GithubApiRepository {
-//        return GithubApiRepositoryImpl(retrofit.create(GithubApiService::class.java))
-//    }
 }
