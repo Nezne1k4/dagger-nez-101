@@ -10,7 +10,7 @@ import dagger.Component
         dependencies = [NetworkComponent::class])
 interface ApiRepositoryComponent {
 
-    fun inject(mainActivity: MainActivity) // -> work
+//    fun inject(mainActivity: MainActivity) // -> work
 
-    //fun inject(baseActivity: BaseActivity) // -> not work
+    fun inject(baseActivity: BaseActivity) // -> not work
 }

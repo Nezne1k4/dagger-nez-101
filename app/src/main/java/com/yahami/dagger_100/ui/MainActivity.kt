@@ -26,8 +26,8 @@ class MainActivity : BaseActivity() {
 //    @Inject
 //    lateinit var githubApiRepository: GithubApiRepository
 
-    @Inject
-    lateinit var apiService: GithubApiService
+//    @Inject
+//    lateinit var apiService: GithubApiService
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +47,7 @@ class MainActivity : BaseActivity() {
 //                .apiRepositoryModule(ApiRepositoryModule())
 //                .build()
 
-        _Dagger100Application.apiComponent.inject(this)
+//        _Dagger100Application.apiComponent.inject(this)
 
         viewButton.setOnClickListener {
 //            GithubApiRepositoryImpl.get().getUser(viewEtUsername.text.toString())
@@ -62,9 +62,15 @@ class MainActivity : BaseActivity() {
 //                            { viewTextview.text = it.message }
 //                    )
 
-            apiService.getUsersRepositories(viewEtUsername.text.toString())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+//            apiService.getUser(viewEtUsername.text.toString())
+//                    .subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(
+//                            { viewTextview.text = it.toString() },
+//                            { viewTextview.text = it.message }
+//                    )
+
+            githubApiRepository.getUser(viewEtUsername.text.toString())
                     .subscribe(
                             { viewTextview.text = it.toString() },
                             { viewTextview.text = it.message }
