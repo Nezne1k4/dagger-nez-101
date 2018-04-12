@@ -15,12 +15,10 @@ abstract class BaseActivity : AppCompatActivity() {
     @Inject
     lateinit var githubApiRepository: GithubApiRepository
 
-    @Inject
-    lateinit var apiService: GithubApiService
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // seed here to initialize GithubApiRepository
         DaggerApiRepositoryComponent.builder()
                 .networkComponent(DaggerNetworkComponent.builder()
                         .networkModule(NetworkModule())

@@ -27,6 +27,7 @@ class GithubApiRepositoryImpl(val api: GithubApiService) : GithubApiRepository {
                 }
     }
 
+//  This is replace by dagger implementation
 //    companion object {
 //        fun get() : GithubApiRepository {
 //            return GithubApiRepositoryImpl(retrofit.create(GithubApiService::class.java))
