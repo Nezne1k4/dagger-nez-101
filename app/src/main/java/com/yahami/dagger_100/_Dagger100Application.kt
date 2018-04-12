@@ -19,7 +19,7 @@ class _Dagger100Application : Application() {
     }
 
     override fun onCreate() {
-        resolveDependencies()
+        //resolveDependencies()
 
         super.onCreate()
 
