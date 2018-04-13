@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 // Provides Retrofit like RetrofitBuilder
 
@@ -17,6 +18,7 @@ import java.util.concurrent.TimeUnit
 class NetworkModule {
 
     @Provides
+    @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient,
                         gsonConverterFactory: GsonConverterFactory,
                         rxJava2CallAdapterFactory: RxJava2CallAdapterFactory
@@ -30,6 +32,7 @@ class NetworkModule {
     }
 
     @Provides
+    @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
@@ -39,11 +42,13 @@ class NetworkModule {
     }
 
     @Provides
+    @Singleton
     fun provideGsonConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create(Gson())
     }
 
     @Provides
+    @Singleton
     fun provideRxJava2CallAdapterFactory(): RxJava2CallAdapterFactory {
         return RxJava2CallAdapterFactory.create()
     }

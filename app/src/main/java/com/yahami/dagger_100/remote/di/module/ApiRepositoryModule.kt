@@ -1,5 +1,6 @@
 package com.yahami.dagger_100.remote.di.module
 
+import com.yahami.dagger_100.remote.di.ApiServiceScope
 import com.yahami.dagger_100.remote.repository.GithubApiRepository
 import com.yahami.dagger_100.remote.repository.GithubApiRepositoryImpl
 import com.yahami.dagger_100.remote.service.GithubApiService
@@ -37,7 +38,8 @@ class ApiRepositoryModule {
      * check ServiceModule session, not exactly, but that's the way of implementation
      */
     @Provides
-    @Singleton
+    //@Singleton
+    @ApiServiceScope
     fun provideGithubApiRepository(githubApiRepositoryImpl: GithubApiRepositoryImpl): GithubApiRepository {
         return githubApiRepositoryImpl
     }

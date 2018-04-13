@@ -13,7 +13,8 @@ import javax.inject.Singleton
 /**
  * Key point here, now GithubApiRepositoryImpl is singleton
  */
-@Singleton
+//@Singleton
+@ApiServiceScope
 class GithubApiRepositoryImpl private constructor() : GithubApiRepository {
 
     private lateinit var apiService: GithubApiService
