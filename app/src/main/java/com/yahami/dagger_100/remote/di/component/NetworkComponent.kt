@@ -7,5 +7,8 @@ import retrofit2.Retrofit
 @Component(modules = [NetworkModule::class])
 interface NetworkComponent {
 
+    /**
+     * The target is creating a Retrofit instance, which is used in ApiRepositoryModule
+     */
     fun retrofit(): Retrofit
 }
